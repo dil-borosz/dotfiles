@@ -49,3 +49,32 @@ cmp.setup.filetype('gitcommit', {
   })
 })
 
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+local on_attach = function(bufnr)
+      require "lsp_signature".on_attach({}, bufnr)
+end
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+for k, v in pairs(lsp) do
+  lspconfig[k].setup({
+    capabilities = capabilities,
+    settings = v.settings,
+    on_attach = on_attach
+  })
+end
