@@ -1,0 +1,11 @@
+{{- $type := promptStringOnce . "type" "personal or work type" -}}
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $vercel_token := promptStringOnce . "vercel_token" "Vercel Token" -}}
+
+data:
+  name: "Balint Orosz"
+  email: {{ $email | quote }}
+  vercel:
+    token: {{ $vercel_token | quote }}
+git:
+  autoPush: true

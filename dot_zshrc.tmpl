@@ -12,17 +12,6 @@
 # autoload colors
 autoload -U colors && colors
 
-# save previous folder and start zsh there
-# if ! [ -z $(cat ~/.cache/tmpfolder) ]; then  
-#   cd $(cat ~/.cache/tmpfolder)
-# fi
-
-# cd print pwd every time
-# function cd {
-#     builtin cd "$@" && pwd > ~/.cache/tmpfolder
-# 		PS1="%{$fg[white]%}-|%{$fg[blue]%}%1d$(parse_git_branch)%{$fg[white]%}|->%{$reset_color%}%b "
-# }
-
 parse_git_branch() {
 	branch=$(git symbolic-ref --short HEAD 2> /dev/null)
 	branchLines=$(git symbolic-ref --short HEAD 2> /dev/null | wc -l)
@@ -64,6 +53,9 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:~/.local/share/nvim/lsp_servers/clojure_lsp/clojure-lsp/clojure_lsp
 export PATH="$HOME/lua-language-server/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PNPM_HOME="/home/balint/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+export PATH=$PATH:$HOME/.tfenv/bin
 
 # remove c-s to stop terminal
 stty -ixon
@@ -105,22 +97,9 @@ export EDITOR="nvim"
 # C-f will find a folder and start tmux there
 bindkey -s ^f "tmux-sessionizer\n"
 
-export PNPM_HOME="/home/balint/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-# fnm
-export PATH=/root/.fnm:$PATH
-eval "`fnm env`"
-
-# fnm
-export PATH=/root/.fnm:$PATH
-eval "`fnm env`"
-
 export AWS_VAULT_BACKEND=pass
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR=/root/.password-store/aws-vault
 
 alias aws-exec="aws-vault exec my-aws-account --"
 
-
-export PATH=$PATH:$HOME/.tfenv/bin
 export VERCEL_API_TOKEN={{ .vercel.token }}
