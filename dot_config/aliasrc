@@ -1,0 +1,100 @@
+#! /bin/sh
+
+# nvim
+alias vim='nvim'
+alias v='vim'
+
+
+# system
+alias ranger='ranger --choosedir=$HOME/.cache/rangerdir; LASTDIR=`cat $HOME/.cache/rangerdir`; cd "$LASTDIR"'
+alias lf='lf --last-dir-path=$HOME/.cache/lfdir; LASTDIR=`cat $HOME/.cache/lfdir`; cd "$LASTDIR"'
+alias r='ranger'
+alias l='lf'
+alias ssh_server="ssh root@165.22.112.107"
+alias sftp_server="sftp root@165.22.112.107"
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias la="ls -A"
+alias mnt="cd /mnt"
+alias f='vim -o `fzf`'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias mv="mv -i"
+alias rm="rm -i"
+alias mnt_nextcloud="sudo mount -t davfs https://cloud.oroszbalint.hu/remote.php/dav/files/admin/ ~/Documents/nextcloud"
+
+# latex/pandoc
+alias pdm="pandoc -V geometry:margin=1.5cm -o"
+alias platex="pdflatex -interaction=nonstopmode"
+
+# pacman
+alias sp="sudo pacman"
+alias sps="sudo pacman -S"
+alias spss="sudo pacman -Ss"
+alias sprm="sudo pacman -Rns"
+
+# config
+alias lemonbarrc='vim ~/.config/lemonbar/panel'
+alias bashrc="vim ~/.config/bash/.bashrc"
+alias zshrc="vim ~/.config/zsh/.zshrc"
+alias vimrc="vim ~/.config/nvim/init.vim"
+alias bspwmrc="vim ~/.config/bspwm/bspwmrc"
+alias sxhkdrc="vim ~/.config/sxhkd/sxhkdrc"
+alias polybarrc="vim ~/.config/polybar/config"
+alias batteryinfo="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+alias alacrittyrc="vim ~/.config/alacritty/alacritty.yml"
+alias aliasrc="vim ~/.config/aliasrc"
+alias lfrc="vim ~/.config/lf/lfrc"
+
+# docker aliases
+alias dexec='sudo docker exec -it '
+alias dps='sudo docker ps'
+alias dcu='sudo docker-compose up -d'
+alias dcd='sudo docker-compose down'
+alias kubectl_server='kubectl --kubeconfig=/home/oroszbalint/.kube/main-k8s-kubeconfig.yaml'
+
+# git aliases
+alias g="git"
+alias ga="git add"
+alias gau="git add -u"
+alias gc="git commit -m"
+alias gm="git merge"
+alias gs="git status"
+alias gb="git branch -l"
+alias gpush="git push"
+alias gpull="git pull"
+alias upload='git add . && git commit -m "auto" && git push origin master'
+
+# quick folder jump
+alias rmg="cd ~/Code/rmg"
+alias work="cd ~/Work/"
+alias workc="cd ~/Work/chaseandlloyd/"
+alias workn="cd ~/Work/nyiltbankolas/portal.nyiltbankolas.hu/"
+alias lambda="cd ~/Work/nyiltbankolas/portal.nyiltbankolas.hu/lambda/psd2cloud"
+alias vusd2="cd ~/Work/nyiltbankolas/portal.nyiltbankolas.hu/vusd2/src"
+alias ob.hu="cd ~/Code/oroszbalint.hu/"
+alias go-ob="cd ~/Code/go/src/github.com/OroszBalint/"
+alias cv="cd ~/Documents/cv/"
+
+# run scripts
+alias run="find ~/.local/bin/* | fzf | sh"
+
+# git bare repo
+alias dot="/usr/bin/git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
+alias dots="dot status"
+alias dota="dot add"
+alias dotau="dot add -u"
+alias dotc="dot commit -m"
+alias dotpush="dot push"
+
+# open file with
+alias -s pdf=zathura
+alias -s {jpg,jpeg,png}=sxiv
+alias -s {ms,log,js,go,yml,md}=nvim
+
+# devour
+alias mpv="~/.local/bin/devour mpv"
+
+# backup
+alias backup="rsync --progress -aP /home/blntrsz /media/blntrsz/be59a0d5-b6f6-4b58-bc85-35f4507d91dc --exclude-from=/home/blntrsz/.config/ignorelist --exclude 'node_modules'"
