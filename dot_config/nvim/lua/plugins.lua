@@ -1,7 +1,3 @@
-local setup = function(name, config)
-  require(name).setup(config)
-end
-
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -21,11 +17,11 @@ return require('packer').startup(function(use)
   -- LSP
   use {
     'williamboman/mason.nvim',
-    config = setup('mason')
+    config = require('mason').setup()
   }
   use {
     'williamboman/mason-lspconfig.nvim',
-    config = setup('mason-lspconfig', {
+    config = require('mason-lspconfig').setup({
       automatic_installation = true
     })
   }
@@ -43,7 +39,7 @@ return require('packer').startup(function(use)
   })
   use {
     "ray-x/lsp_signature.nvim",
-    config = setup('mason-lspconfig')
+    config = require('mason-lspconfig').setup()
   }
 
   use {
@@ -53,7 +49,7 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ":TSUpdate",
-    config = setup('nvim-treesitter.configs', {
+    config = require('nvim-treesitter.configs').setup({
       ensure_installed = {
         "lua",
         "markdown",
@@ -143,15 +139,15 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-context'
   use {
     'numToStr/Comment.nvim',
-    config = setup('Comment')
+    config = require('Comment').setup()
   }
   use {
     "windwp/nvim-autopairs",
-    config = setup("nvim-autopairs")
+    config = require("nvim-autopairs").setup()
   }
   use {
     'simrat39/symbols-outline.nvim',
-    config = setup("symbols-outline")
+    config = require("symbols-outline").setup()
   }
 
   -- cmp
@@ -172,7 +168,7 @@ return require('packer').startup(function(use)
       'nvim-lua/plenary.nvim',
       'sindrets/diffview.nvim'
     },
-    config = setup('neogit', {
+    config = require('neogit').setup({
       integrations = {
         diffview = true
       }
@@ -180,11 +176,11 @@ return require('packer').startup(function(use)
   }
   use {
     'lewis6991/gitsigns.nvim',
-    config = setup('gitsigns')
+    config = require('gitsigns').setup()
   }
   use {
     'dinhhuy258/git.nvim',
-    config = setup('git', {
+    config = require('git').setup({
       default_mappings = true, -- NOTE: `quit_blame` and `blame_commit` are still merged to the keymaps even if `default_mappings = false`
 
       keymaps = {
